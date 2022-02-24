@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import { getApiResource } from "../../utils/network";
 import { API_PEOPLE } from "../../constants/api";
+import { getPeopleId, getPeopleIMage } from "../../services/getPeopleData";
 
 // import styles from "./PeoplePage.module.css";
 const PeoplePage = () => {
@@ -10,9 +11,13 @@ const PeoplePage = () => {
   const getResource = async (url) => {
     const res = await getApiResource(url);
     const peopleList = res.results.map(({ name, url }) => {
+      const id = getPeopleId(url);
+      const img = getPeopleIMage(id);
+      console.log(img);
       return {
-        name: name,
-        url: url,
+        id,
+        name,
+        img,
       };
     });
     setPeople(peopleList);
@@ -25,8 +30,12 @@ const PeoplePage = () => {
     <>
       {people && (
         <ul>
-          {people.map(({ name, url }) => (
-            <li key={name}>{name}</li>
+          {people.map(({ name, id, img }) => (
+            <li key={id}>
+              <img src={img} alt={name} className="img" />
+
+              <p className="p">{name}</p>
+            </li>
           ))}
         </ul>
       )}
