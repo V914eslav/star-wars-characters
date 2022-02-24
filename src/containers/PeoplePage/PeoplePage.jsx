@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import PeopleList from "../../components/PeoplePage/PeopleList";
 
 import { getApiResource } from "../../utils/network";
 import { API_PEOPLE } from "../../constants/api";
@@ -26,21 +27,7 @@ const PeoplePage = () => {
     getResource(API_PEOPLE);
   }, []);
 
-  return (
-    <>
-      {people && (
-        <ul>
-          {people.map(({ name, id, img }) => (
-            <li key={id}>
-              <img src={img} alt={name} className="img" />
-
-              <p className="p">{name}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
-  );
+  return <>{people && <PeopleList people={people} />}</>;
 };
 
 export default PeoplePage;
