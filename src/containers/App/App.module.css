@@ -1,1 +1,10 @@
-
+.wrapper {
+  max-width: var(--width-max);
+  margin: auto;
+  padding: var(--spacin-large) 0;
+}
+@media screen and(width-max:1400px) {
+  .wrapper {
+    padding: var(--spacin-large) var(--spacin-large);
+  }
+} ;
