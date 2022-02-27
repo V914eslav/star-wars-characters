@@ -3,17 +3,23 @@
   --color-black: #000;
   --color-dark-grey: #10100e;
   --color-yellow: #ffff00;
+  --color-blue: #6a83fb;
+  --color-violet: #ae72c2;
 
   --spacing-medium: 20px;
+  --spacing--large: 30px;
 
   --transition: 0.4s;
+
   --border-radius-small: 3px;
 
   --font-size-header: 26px;
-
   --font-family-main: sans-serif;
+  --font-bold: 600;
 
   --theme-default-header: #cccc46;
+
+  --text-shadow-yellow: 0 0 2px var(--color-white), 0 0 40px var(--color-blue);
 }
 body {
   margin: 0;
