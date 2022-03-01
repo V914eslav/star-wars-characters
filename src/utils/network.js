@@ -10,6 +10,11 @@
 //   const body = await res.json();
 
 //   console.log(res, body);
+import { HTTP, HTTPS } from "@constants/api";
+export const chngeHTTP = (url) => {
+  const result = url ? url.replace(HTTP, HTTPS) : url;
+  return result;
+};
 // };
 export const getApiResource = async (url) => {
   try {
