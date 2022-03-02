@@ -11,7 +11,12 @@
 
 //   console.log(res, body);
 import { HTTP, HTTPS } from "@constants/api";
-export const chngeHTTP = (url) => {
+/**
+ * Изменияет URL с HTTP на HTTPS
+ * @param {String} url  -url для изменения
+ * @returns {String} -url c HTTPS
+ */
+export const changeHTTP = (url) => {
   const result = url ? url.replace(HTTP, HTTPS) : url;
   return result;
 };
