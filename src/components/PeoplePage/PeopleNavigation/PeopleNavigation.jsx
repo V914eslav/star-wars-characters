@@ -15,15 +15,15 @@ const PeopleNavigation = ({ getResource, prevPage, nextPage, counterPage }) => {
   };
 
   return (
-    <div>
-      <Link to={`/people/?page=${counterPage - 1}`} className={styles.link}>
+    <div className={styles.container}>
+      <Link to={`/people/?page=${counterPage - 1}`} className={styles.buttons}>
         <UiButton
           text="Previous"
           disabled={!prevPage}
           onClick={handleChangePrev}
         />
       </Link>
-      <Link to={`/people/?page=${counterPage + 1}`} className={styles.link}>
+      <Link to={`/people/?page=${counterPage + 1}`} className={styles.buttons}>
         <UiButton
           text=" Next"
           disabled={!nextPage}
