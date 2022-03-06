@@ -6,13 +6,17 @@
   --color-blue: #6a83fb;
   --color-violet: #ae72c2;
 
+  --spacing-ultrasmall: 5px;
   --spacing-small: 10px;
   --spacing-medium: 20px;
   --spacing--large: 30px;
 
+  --margin-list: 7px;
+
   --transition: 0.4s;
 
   --border-radius-small: 3px;
+  --border-radius-medium: 5px;
 
   --font-size-header: 26px;
   --font-size-subheader: 18px;

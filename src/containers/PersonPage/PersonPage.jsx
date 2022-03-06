@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { withErrorApi } from "@hoc-helpers/withErrorApi";
+import PersonInfo from "@components/PersonPage/PersonInfo/PersonInfo";
+import PersonPhoto from "@components/PersonPage/PersonPhoto/PersonPhoto";
+
 import { getApiResource } from "@utils/network";
+import { getPeopleImage } from "@services/getPeopleData";
 import { API_PERSONE } from "@constants/api";
 import PropTypes from "prop-types";
 
@@ -13,6 +17,7 @@ import styles from "./PersonPage.module.css";
 const PersonPage = ({ setErrorApi }) => {
   const [personInfo, setPersonInfo] = useState(null);
   const [personName, setPersonName] = useState(null);
+  const [personPhoto, setPersonPhoto] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,6 +34,8 @@ const PersonPage = ({ setErrorApi }) => {
           { title: "Gender", data: res.gender },
         ]);
         setPersonName(res.name);
+
+        setPersonPhoto(getPeopleImage(id));
         // res.films
         setErrorApi(false);
       } else {
@@ -39,21 +46,13 @@ const PersonPage = ({ setErrorApi }) => {
 
   return (
     <>
-      <h1 className={styles.hhh}>{personName}</h1>
-      {personInfo && (
-        <ul>
-          {personInfo.map(
-            ({ title, data }) =>
-              data && (
-                <li key={title}>
-                  <span>
-                    {title}:{data}
-                  </span>
-                </li>
-              )
-          )}
-        </ul>
-      )}
+      <div className={styles.wrapper}>
+        <span className={styles.person__name}>{personName}</span>
+        <div className={styles.container}>
+          <PersonPhoto personPhoto={personPhoto} personName={personName} />
+          {personInfo && <PersonInfo personInfo={personInfo} />}
+        </div>
+      </div>
     </>
   );
 };
