@@ -5,8 +5,9 @@ import { useParams } from "react-router-dom";
 
 import { withErrorApi } from "@hoc-helpers/withErrorApi";
 import PersonInfo from "@components/PersonPage/PersonInfo/PersonInfo";
-import PersonPhoto from "@components/PersonPage/PersonPhoto/PersonPhoto";
-import PersonLinkBack from "@components/PersonPage/PersonLinkBack/PersonLinkBack";
+import PersonPhoto from "@components/PersonPage/PersonPhoto";
+import PersonLinkBack from "@components/PersonPage/PersonLinkBack";
+import PersonFilms from "@components/PersonPage/PersonFilms";
 
 import { getApiResource } from "@utils/network";
 import { getPeopleImage } from "@services/getPeopleData";
@@ -19,6 +20,7 @@ const PersonPage = ({ setErrorApi }) => {
   const [personInfo, setPersonInfo] = useState(null);
   const [personName, setPersonName] = useState(null);
   const [personPhoto, setPersonPhoto] = useState(null);
+  const [personFilms, setPersonFilms] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -35,9 +37,10 @@ const PersonPage = ({ setErrorApi }) => {
           { title: "Gender", data: res.gender },
         ]);
         setPersonName(res.name);
-
         setPersonPhoto(getPeopleImage(id));
-        // res.films
+
+        res.films.length && setPersonFilms(res.films);
+
         setErrorApi(false);
       } else {
         setErrorApi(true);
@@ -53,6 +56,7 @@ const PersonPage = ({ setErrorApi }) => {
         <div className={styles.container}>
           <PersonPhoto personPhoto={personPhoto} personName={personName} />
           {personInfo && <PersonInfo personInfo={personInfo} />}
+          {personFilms && <PersonFilms personFilms={personFilms} />}
         </div>
       </div>
     </>
