@@ -1,28 +1,23 @@
+import { omit } from "lodash";
+
 import {
   ADD_PERSON_TO_FAVORITE,
   REMOVE_PERSON_FROM_FAVORITE,
 } from "@store/constants/actionTypes";
-import { action } from "@storybook/addon-actions";
 
-const initialState = "Hello";
+const initialState = {};
 
-const favoriteReducer = (state = initialState, acion) => {
-  switch (acion.type) {
+const favoriteReducer = (state = initialState, action) => {
+  switch (action.type) {
     case ADD_PERSON_TO_FAVORITE:
       return {
         ...state,
         ...action.payload,
       };
-      break;
     case REMOVE_PERSON_FROM_FAVORITE:
-      return {
-        ...state,
-        ...action.payload,
-      };
-      break;
+      return omit(state, [action.payload]);
     default:
       return state;
-      break;
   }
 };
 export default favoriteReducer;

@@ -22,6 +22,7 @@ const PersonFilms = React.lazy(() =>
 const PersonPage = ({ setErrorApi }) => {
   const [personInfo, setPersonInfo] = useState(null);
   const [personName, setPersonName] = useState(null);
+  const [personId, setPersonId] = useState(null);
   const [personPhoto, setPersonPhoto] = useState(null);
   const [personFilms, setPersonFilms] = useState(null);
   const { id } = useParams();
@@ -29,6 +30,8 @@ const PersonPage = ({ setErrorApi }) => {
   useEffect(() => {
     (async () => {
       const res = await getApiResource(`${API_PERSONE}/${id}/`);
+
+      setPersonId(id);
       if (res) {
         setPersonInfo([
           { title: "Height", data: res.height },
@@ -58,7 +61,11 @@ const PersonPage = ({ setErrorApi }) => {
       <div className={styles.wrapper}>
         <span className={styles.person__name}>{personName}</span>
         <div className={styles.container}>
-          <PersonPhoto personPhoto={personPhoto} personName={personName} />
+          <PersonPhoto
+            personId={personId}
+            personPhoto={personPhoto}
+            personName={personName}
+          />
           {personInfo && <PersonInfo personInfo={personInfo} />}
           {personFilms && (
             <Suspense fallback={<UiLoading />}>
