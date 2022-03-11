@@ -1,7 +1,8 @@
 .contianer {
   display: flex;
   align-items: center;
-  margin-bottom: var(--spacing--large);
+  margin-bottom: var(--spacing-large);
+  margin-top: var(--spacing-large);
 }
 .list__contianer {
   display: flex;
