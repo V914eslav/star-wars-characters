@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Suspense } from "react";
+import { useSelector } from "react-redux";
 
 import { useParams } from "react-router-dom";
 
@@ -25,11 +26,15 @@ const PersonPage = ({ setErrorApi }) => {
   const [personId, setPersonId] = useState(null);
   const [personPhoto, setPersonPhoto] = useState(null);
   const [personFilms, setPersonFilms] = useState(null);
+  const [personFavorite, setPersonFavorite] = useState(false);
   const { id } = useParams();
+  const storeData = useSelector((state) => state.favoriteReducer);
 
   useEffect(() => {
     (async () => {
       const res = await getApiResource(`${API_PERSONE}/${id}/`);
+
+      storeData[id] ? setPersonFavorite(true) : setPersonFavorite(false);
 
       setPersonId(id);
       if (res) {
@@ -65,6 +70,8 @@ const PersonPage = ({ setErrorApi }) => {
             personId={personId}
             personPhoto={personPhoto}
             personName={personName}
+            personFavorite={personFavorite}
+            setPersonFavorite={setPersonFavorite}
           />
           {personInfo && <PersonInfo personInfo={personInfo} />}
           {personFilms && (

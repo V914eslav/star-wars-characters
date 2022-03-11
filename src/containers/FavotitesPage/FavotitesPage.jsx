@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 const FavotitesPage = () => {
   const storeData = useSelector((state) => state.favoriteReducer);
 
-  console.log(storeData);
   return <div>FavotitesPage</div>;
 };
 
