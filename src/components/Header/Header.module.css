@@ -4,6 +4,13 @@
   margin-bottom: var(--spacing-large);
   margin-top: var(--spacing-large);
 }
+.logo {
+  width: 60px;
+  height: 60px;
+  margin-right: var(--spacing-large);
+  object-fit: cover;
+  object-position: center center;
+}
 .list__contianer {
   display: flex;
   flex-wrap: wrap;
