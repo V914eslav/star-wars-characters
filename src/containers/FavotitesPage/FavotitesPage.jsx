@@ -34,3 +34,4 @@ const FavotitesPage = () => {
 };
 
 export default FavotitesPage;
+  
