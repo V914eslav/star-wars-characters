@@ -48,6 +48,9 @@ const Header = () => {
         <li className={styles.list__item}>
           <NavLink to="/not-found">Not Found</NavLink>
         </li>
+        <li className={styles.list__item}>
+          <NavLink to="/search">Search</NavLink>
+        </li>
       </ul>
       <Favorite />
     </div>
