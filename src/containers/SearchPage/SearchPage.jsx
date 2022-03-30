@@ -6,6 +6,8 @@ import { getApiResource } from "@utils/network";
 import { API_SEARCH } from "@constants/api";
 import { getPeopleId, getPeopleImage } from "@services/getPeopleData";
 
+import SearchPageInfo from "@components/SearchPage/SearchPageInfo";
+
 const SearchPage = ({ setErrorApi }) => {
   const [inputSearchValue, setInputSearchValue] = useState("");
   const [people, setPeople] = useState([]);
@@ -43,6 +45,7 @@ const SearchPage = ({ setErrorApi }) => {
         onChange={handleInputChange}
         placeholder="Input character's name"
       />
+      <SearchPageInfo people={people} />
     </>
   );
 };
