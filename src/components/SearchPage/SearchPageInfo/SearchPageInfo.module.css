@@ -1,3 +1,6 @@
 .list__container {
   width: 100%;
 }
+.list__item {
+  color: #000;
+}
