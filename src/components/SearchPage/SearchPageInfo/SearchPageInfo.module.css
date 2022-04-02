@@ -4,3 +4,8 @@
 .list__item {
   color: #000;
 }
+.person__photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
