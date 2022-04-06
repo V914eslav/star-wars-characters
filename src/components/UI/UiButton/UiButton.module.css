@@ -15,8 +15,8 @@
 }
 button:disabled,
 button:disabled:hover {
-  color: var(--color-grey);
-  border-color: var(--color-grey);
+  color: var(--color-gray);
+  border-color: var(--color-gray);
   cursor: auto;
   background-color: transparent;
 }

@@ -1,12 +1,10 @@
 .list__container {
   column-count: 3;
-  margin: var(--spacing-medioum) 0;
+  margin: var(--spacing-medium) 0;
   padding: 0;
   list-style-type: none;
 }
-.list__item {
-  color: #000;
-}
+
 .list__item a {
   display: inline-flex;
   color: var(--color-black);
@@ -29,9 +27,10 @@
   color: var(--color-white);
   text-shadow: var(--text-shadow-blue);
 }
-.person__coment {
+.person__comment {
   color: var(--color-white);
 }
+
 @media screen and (max-width: 850px) {
   .list__container {
     column-count: 2;
