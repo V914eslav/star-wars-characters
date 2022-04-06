@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
+import { debounce } from "lodash";
 
 import { withErrorApi } from "@hoc-helpers/withErrorApi";
 import { getApiResource } from "@utils/network";
@@ -13,6 +14,7 @@ const SearchPage = ({ setErrorApi }) => {
   const [people, setPeople] = useState([]);
 
   const getResponse = async (param) => {
+    console.log(param);
     const res = await getApiResource(API_SEARCH + param);
     if (res) {
       const peopleList = res.results.map(({ name, url }) => {
@@ -31,10 +33,15 @@ const SearchPage = ({ setErrorApi }) => {
     }
   };
 
+  const debouncedGetResponse = useCallback(
+    debounce((value) => getResponse(value), 300),
+    []
+  );
+
   const handleInputChange = (event) => {
     const value = event.target.value;
     setInputSearchValue(value);
-    getResponse(value);
+    debouncedGetResponse(value);
   };
   return (
     <>
