@@ -50,6 +50,9 @@ const Header = () => {
         </li>
         <li className={styles.list__item}>
           <NavLink to="/search">Search</NavLink>
+        </li>{" "}
+        <li className={styles.list__item}>
+          <NavLink to="/fail">Fail</NavLink>
         </li>
       </ul>
       <Favorite />
